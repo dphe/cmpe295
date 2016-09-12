@@ -10,3 +10,4 @@ To Setup the Project
 4. Start the server with npm start command
 5.  Access the application at "http://localhost:5005/"
 
+![Application Home](/images/app-image2.png)
