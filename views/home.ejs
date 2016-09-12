@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Case</title>
+    <title>Smart Disaster Recovery</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../stylesheets/home.css">
@@ -38,11 +38,10 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Action1</a></li>
+                        <li><a href="#">Action2</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -62,7 +61,7 @@
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Demos</a></li>
                         <li><a href="#">Team</a></li>
-                        <li><a href="#">Backups In Progress <span class="badge">1,118</span></a></li>
+                        <li><a href="#">Backups In Progress <span class="badge">5</span></a></li>
                     </ul>
                 <!-- normal collapsible navbar markup -->
             </nav>
@@ -113,8 +112,25 @@
         <div class="col-sm-2">
             <div class="panel panel-default" style="margin-top:180px">
                 <div class="panel-heading"><h4>Disaster Simulator</h4></div>
-                <div class="panel-body">
-                    <div id="simulator" ></div>
+                <div class="panel-body" style="background-color:#D6EAF8">
+                    <div id="simulator" >
+                        <form action="">
+                            <label>Diaster Type:</label><br>
+                            <input style="width: 200px" type="select" name="earthquake" value="Earthquake">
+                            <br><br>
+                            <label>Diaster Location:</label><br>
+                            <select style="width:200px;height:50px;font-size:35px">
+                                <optgroup class="opt">
+                                    <option value="earthquake">Earthquake</option>
+                                    <option value="hurricane">Hurricane</option>
+                                    <option value="floods">floods</option>
+                                </optgroup>
+                            </select>
+                            <br><br>
+                            <button type="button" class="btn btn-success" style="float:right">Submit</button>
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

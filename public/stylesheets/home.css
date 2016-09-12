@@ -49,6 +49,14 @@ a:hover, .navbar-dark .navbar-nav > .active > a:focus {
    /*font-weight:bold;*/
     font-size: 15px;
     color:black;
-    background-color:#9acfea;
+    background-color:lightgrey;
 }
 
+
+
+input{
+    border-radius:5px;
+}
+/*.opt {*/
+    /*font-size: 30px;*/
+/*}*/
