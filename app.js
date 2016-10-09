@@ -9,6 +9,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,10 +52,10 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+ // res.render('error', {
     // message: err.message,
     // error: {}
-  });
+ // });
 });
 
 
@@ -62,4 +64,12 @@ var server = app.listen(5006,function() {
   var port = server.address().port
   console.log("CMPE 295 DRDC listening at http://localhost:%s", port);
 })
+//Socket Code
+io.on('connection', function(socket) {
+    console.log("Socket connection successful");
+
+    socket.on('disaster warning', function(status) {
+        console.log("Disaster warning received");
+    });
+});
 module.exports = app;

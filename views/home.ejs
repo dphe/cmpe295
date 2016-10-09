@@ -268,7 +268,7 @@
                 <div class="panel-heading"><h4>Disaster Simulator</h4></div>
                 <div class="panel-body" style="background-color:#D6EAF8">
                     <div id="simulator" >
-                        <form action="">
+                        <form action="" method="post">
                             <label>Diaster Type:</label><br>
                             <input style="width: 200px" type="select" name="earthquake" value="Earthquake">
                             <br><br>
@@ -281,8 +281,7 @@
                                 </optgroup>
                             </select>
                             <br><br>
-                            <button type="button" class="btn btn-success" style="float:right">Submit</button>
-
+                            <input type="submit" class="btn btn-success" style="float:right" onclick="javascript:sendAlert();">Submit</input>
                         </form>
                     </div>
                 </div>
@@ -290,16 +289,21 @@
         </div>
     </div>
 </div>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../javascripts/home.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../javascripts/home.js"></script>
 <script src="../javascripts/dest/js/next.js"></script>
 <script src="../javascripts/data.js"></script>
 <script src="../javascripts/shell.js"></script>
-<script src="../javascripts/database/datacenters.js"></script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH_h4an-6ko9vfeDVZ-pGabjQRFWSNkzI&callback=initMap">
 </script>
+<script src="../javascripts/socket/disaster-simulation.js"></script>
+
+
+
 
 
 </body>
