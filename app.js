@@ -51,10 +51,15 @@ if (app.get('env') === 'development') {
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
-    message: err.message,
-    error: {}
+    // message: err.message,
+    // error: {}
   });
 });
 
 
+var server = app.listen(5006,function() {
+  var host = server.address().address;
+  var port = server.address().port
+  console.log("CMPE 295 DRDC listening at http://localhost:%s", port);
+})
 module.exports = app;
