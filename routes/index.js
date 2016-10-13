@@ -1,5 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var app_root = require('app-root-path');
+var db = require(app_root.path+'/services/database.js');
+
+
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -11,20 +15,10 @@ function genHTML(res) {
   res.render('home', { title: 'CMPE295 Disaster Recover using SDN'});
 }
 
-/* GET datacenters page */
-
-var datacenterServices = require("../public/javascripts/database/datacenters.js");
-console.log("Initialized services");
-
-function genDatacentersHTML(res) {
-    console.log("Request handler 'genDatacentersHTML' for datacenters page.");
-    res.render('datacenters-info');
-}
 
 router.get('/datacenters-info',function(req, res) {
-  genDatacentersHTML(res);
+  res.render('datacenters-info');
 });
-
 
 
 /* GET list of datacenters page */
@@ -32,34 +26,36 @@ router.get('/datacenters-info',function(req, res) {
 router.get('/fetchDatacenters', function(req,res) {
 
   console.log("Request handler 'fetchDatacenters' for datacenters page using routes.");
- // datacenterServices.initializaCloudant(); //TODO:Move it somewhere else!
-  console.log("Initialization done");
-  datacenterServices.fetchDatacenters(function (err,resp) {
+  db.fetchDatacenters("dr-web-db",function (err,resp) {
     if(err) {
-      console.log(err.stack);
       res.status(500).send('No datacenters returned');
     } else {
-      console.log(resp);
       res.json(resp);
     }
-
   });
 
 })
 
-function genDisasterNotificationsHTML(res) {
-    console.log("Request handler 'genDisasterNotificationsHtml' for disaster notifications page");
-    var homeTabs = $('#homeTab');
-    homeTabs.addClass('hidden');
-    res.render('notifications');
-}
+/* Create a disaster event */
+router.post('/createDisasterEvent', function(req,res) {
+  console.log("Request handler to create a new disaster");
+  docObj={};
+  docObj.dbType= "disasters";
+  docObj.disasterName=req.body.disasterName;
+  docObj.disasterTime = req.body.disasterTime;
+  docObj.disasterTimeZone = req.body.disasterTimeZone;
+  docObj.disasterLocation = req.body.disasterLocation;
 
-router.get('/notifications', function(req, res) {
-    console.log("Getting /notifications page");
-    genDisasterNotificationsHTML(res);
+  db.update("dr-web-db",docObj,function (err,data) {
+      if(!err) {
+        console.log("here1234");
+          res.status(200).send("Success");
+      } else {
+          res.status(500).send("error" + err)
+      }
+
+  });
+
 });
-
-
-//Socket code for receiving alerts
 
 module.exports = router;
