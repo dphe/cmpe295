@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+
 /* GET home page. */
 router.get('/', function(req, res) {
   genHTML(res);
@@ -56,7 +57,7 @@ function genDisasterNotificationsHTML(res) {
 
 router.get('/notifications', function(req, res) {
     console.log("Getting /notifications page");
-    genDisasterNotificationsHTML(res);
+    //genDisasterNotificationsHTML(res);
 });
 
 

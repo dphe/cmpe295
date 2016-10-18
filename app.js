@@ -9,7 +9,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-var http = require('http').Server(app);
+var http = require("http").Server(app);
 var io = require('socket.io')(http);
 
 // view engine setup
@@ -59,17 +59,50 @@ app.use(function(err, req, res, next) {
 });
 
 
-var server = app.listen(5006,function() {
+var server = http.listen(5006,function() {
   var host = server.address().address;
   var port = server.address().port
   console.log("CMPE 295 DRDC listening at http://localhost:%s", port);
 })
+
 //Socket Code
 io.on('connection', function(socket) {
-    console.log("Socket connection successful");
+    console.log("Socket connection successful!");
 
-    socket.on('disaster warning', function(status) {
-        console.log("Disaster warning received");
+    socket.on('disaster-warning', function(data) {
+        console.log("Disaster warning received", data);
+        socket.emit('saved-warning', {message:'Saved into database'})
     });
+    socket.on('call', function (p1, fn) {
+        console.log('client sent ');
+        // do something useful
+        fn(0, 'some data');
+    });
+    //TODO: socket disconnect
+    socket.on('disconnect', function() {
+        console.log("Socket disconnected");
+    });
+
 });
+
+process.stdin.resume();
+
+function exitHandler(options, error) {
+    if(options.cleanup)  {
+        console.log('cleaning up')
+
+    }
+    if(options.exit) {
+        console.log('exiting');
+        process.exit();
+    }
+    if(error) {
+        console.log(error.stack)
+    }
+}
+
+process.on('exit', exitHandler.bind(null, {cleanup: true}));
+process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+process.on('uncaughtexception', exitHandler.bind(null, {exit: true}));
+
 module.exports = app;

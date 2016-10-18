@@ -11,7 +11,7 @@ var config = {
     },
     production:{
         username:"natrium43",
-        password:"",
+        password:"test1234",
         key_user : 'turiedstedouldrelveresec',
         pwd_user :'0eda77e8796ee9b1384fe36109d1b8360bcaf4b1',
     }
