@@ -49,9 +49,16 @@ $(document).ready(function () {
       + currentdate.getHours() + ":"
       + currentdate.getMinutes() + ":"
       + currentdate.getSeconds();
+
+    if($("#disasterLoc").val() == 'other'){
+      var latitude = $('#simulatorLatitude').val();
+      var longitude =   $('#simulatorLongitude').val();
+    }
     disasterInfo={
       "disasterName":$("#disasterType").val(),
       "disasterLocation":$("#disasterLoc").val(),
+      "disasterLatitude": latitude,
+      "disasterLongitude": longitude,
       "disasterTime": datetime,
       "disasterTimeZone":currentdate.toString().split("GMT")[1]
     }
@@ -62,12 +69,26 @@ $(document).ready(function () {
       url: "/createDisasterEvent",
       success: function (data) {
         alert("Disaster Event Created");
+        $('#simulatorLatitude').val('');
+        $('#simulatorLongitude').val('');
+        $('#disasterType').prop('selectedIndex',0);
+        $('#disasterLoc').prop('selectedIndex',0);
+
       },
       error: function (e) {
         console.log(e);
       }
     });
 
+  });
+  $("#disasterLoc").on('change',function(){
+
+    //
+    if($("#disasterLoc").val()=="other"){
+      $('#simulatorOtherOptions').show();
+    }else{
+      $('#simulatorOtherOptions').hide();
+    }
   });
 
 });

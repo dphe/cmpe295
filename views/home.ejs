@@ -36,7 +36,7 @@
                     </form>
                     <li><a href="#">Help</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"                               aria-expanded="false">User <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Action1</a></li>
                             <li><a href="#">Action2</a></li>
@@ -278,14 +278,21 @@
                             </select>
                             <br><br>
                             <label>Diaster Location:</label><br>
-                            <select id="disasterLoc"style="width:200px;height:30px;font-size:14px">
+                            <select id="disasterLoc" style="width:200px;height:30px;font-size:14px">
                                 <optgroup class="opt">
                                     <option value="san Jose">San Jose</option>
-                                    <option value="sandeigo">San Deigo</option>
+                                    <option value="sandeigo">Santa Clara</option>
                                     <option value="new york">New York</option>
+                                    <option value="houston">Houston</option>
+                                    <option value="chicago">Chicago</option>
+                                    <option value="other">Other</option>
                                 </optgroup>
                             </select>
                             <br><br>
+                            <div id="simulatorOtherOptions" hidden>
+                                <label>Latitude:</label><br><input id="simulatorLatitude" type="text" name="latitude" style="width:200px;height:30px;font-size:14px"><br><br>
+                                <label>Longitude:</label><br><input id="simulatorLongitude" type="text" name="longitude" style="width:200px;height:30px;font-size:14px"><br><br>
+                            </div>
                             <button id="simulatorSubmitButton" type="button" class="btn btn-success" style="float:right">Submit</button>
 
                         </form>
