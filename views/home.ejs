@@ -22,7 +22,6 @@
                 </a>
                 <a class="navbar-brand" href="#">Smart Disaster Recovery</a>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -270,18 +269,24 @@
                     <div id="simulator" >
                         <form action="">
                             <label>Diaster Type:</label><br>
-                            <input style="width: 200px" type="select" name="earthquake" value="Earthquake">
-                            <br><br>
-                            <label>Diaster Location:</label><br>
-                            <select style="width:200px;height:50px;font-size:35px">
+                            <select id="disasterType" style="width:200px;height:30px;font-size:14px">
                                 <optgroup class="opt">
                                     <option value="earthquake">Earthquake</option>
                                     <option value="hurricane">Hurricane</option>
-                                    <option value="floods">floods</option>
+                                    <option value="floods">Floods</option>
                                 </optgroup>
                             </select>
                             <br><br>
-                            <button type="button" class="btn btn-success" style="float:right">Submit</button>
+                            <label>Diaster Location:</label><br>
+                            <select id="disasterLoc"style="width:200px;height:30px;font-size:14px">
+                                <optgroup class="opt">
+                                    <option value="san Jose">San Jose</option>
+                                    <option value="sandeigo">San Deigo</option>
+                                    <option value="new york">New York</option>
+                                </optgroup>
+                            </select>
+                            <br><br>
+                            <button id="simulatorSubmitButton" type="button" class="btn btn-success" style="float:right">Submit</button>
 
                         </form>
                     </div>
@@ -300,7 +305,6 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH_h4an-6ko9vfeDVZ-pGabjQRFWSNkzI&callback=initMap">
 </script>
-
 
 </body>
 
