@@ -11,3 +11,10 @@ To Setup the Project
 5.  Access the application at "http://localhost:5005/"
 
 ![Application Home](/images/app-image2.png)
+
+ODL setup:
+cd odl/ladr
+mvn clean install -DskipTests -Dmaven.javadoc.skip=true
+cd karaf/target/assembly/bin
+./karaf
+
