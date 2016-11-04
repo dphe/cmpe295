@@ -1,0 +1,54 @@
+module ladr {
+    yang-version 1;
+    namespace "urn:opendaylight:params:xml:ns:yang:ladr";
+    prefix "ladr";
+
+    revision "2015-01-05" {
+        description "Initial revision of ladr model";
+    }
+
+    rpc getLocationIPMappings {
+        input {
+            leaf locationLatitude {
+                type decimal64 {
+                	fraction-digits 5;
+                }
+            }
+            leaf locationLongitude {
+                type decimal64 {
+                	fraction-digits 5;
+                }
+            }
+            leaf range {
+                type decimal64 {
+                	fraction-digits 2;
+                }
+            }
+        }
+        output {
+	        list serverLocIpInfo {
+	            leaf ipAddress {
+	                type string;
+	            }
+	            leaf locationId {
+	                type string;
+	            }
+	            leaf latitude {
+	                type decimal64 {
+	                	fraction-digits 5;
+	                }
+                }
+            	leaf longitude {
+	                type decimal64 {
+	                	fraction-digits 5;
+	                }
+                }
+                leaf distance {
+	                type decimal64 {
+	                	fraction-digits 2;
+	                }
+            }
+            }
+        }
+    }
+}
